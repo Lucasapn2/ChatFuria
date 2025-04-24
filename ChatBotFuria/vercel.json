@@ -1,0 +1,25 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/chat.js",  
+        "use": "@vercel/node"
+      },
+      {
+        "src": "public/index.html",  
+        "use": "@vercel/static"
+      },
+      {
+        "src": "public/styles.css", 
+        "use": "@vercel/static"
+      },
+      {
+        "src": "public/imgs/**/*",  
+        "use": "@vercel/static"
+      }
+    ],
+    "rewrites": [
+      { "source": "/", "destination": "/public/index.html" } 
+    ]
+  }
+  
