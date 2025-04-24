@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="ChatBot da FURIA" />
+  <meta name="author" content="FURIA" />
+  <title>FURIA ChatBot - A Pantera Responde</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Chat Container -->
+  <div class="chat-container">
+    <div class="chat-header">
+      <img src="imgs/logo.png" alt="Logo FURIA" class="logo" />
+      <span>Furia</span>
+    </div>
+    <div class="chat-box" id="chatBox" role="log">
+      <div class="message bot-message"><b>FuriaBot:</b> Olá! Seja bem-vindo 👋 Como posso te ajudar hoje?</div>
+    </div>
+    <div class="input-area">
+      <input
+        type="text"
+        id="userInput"
+        placeholder="Pergunte alguma coisa..."
+        onkeypress="if(event.key === 'Enter') sendMessage()"
+        aria-label="Digite sua mensagem"
+      />
+      <button onclick="sendMessage()" aria-label="Enviar mensagem">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chatBox');
+    let typingIndicator;
+
+    function appendMessage(content, sender) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${sender}-message`;
+      messageDiv.innerHTML = `<b>${sender === 'user' ? 'Você' : 'FuriaBot'}:</b> ${content}`;
+      chatBox.appendChild(messageDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+
+      if (!message) return;
+
+      appendMessage(message, 'user');
+
+      // Mostra "digitando..."
+      typingIndicator = document.createElement('div');
+      typingIndicator.className = 'message bot-message typing';
+      typingIndicator.innerHTML = `<b>FuriaBot:</b> Digitando...`;
+      chatBox.appendChild(typingIndicator);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          chatBox.removeChild(typingIndicator); // Remove "digitando..."
+          appendMessage(data.response, 'bot'); // Adiciona resposta real
+        });
+
+      input.value = '';
+    }
+  </script>
+</body>
+</html>
