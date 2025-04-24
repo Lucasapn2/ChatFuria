@@ -11,7 +11,14 @@
       }
     ],
     "rewrites": [
-      { "source": "/(?!api).*", "destination": "/index.html" }
+      {
+        "source": "/api/chat",
+        "destination": "/api/chat.js"
+      },
+      {
+        "source": "/",
+        "destination": "/index.html"
+      }
     ]
   }
   
