@@ -11,5 +11,8 @@
       "src": "/(.*)",
       "dest": "/public/$1"
     }
-  ]
+  ],
+  "dependencies": {
+    "@google/genai": "^0.10.0"
+  }
 }
