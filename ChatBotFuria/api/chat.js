@@ -1,4 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
+import contextPrompt from './contexto'; // Importando o contexto
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -10,7 +11,15 @@ export default async function handler(req, res) {
       model: 'gemini-2.0-flash',
       contents: [
         {
-          role: 'user',
+          role: 'system', // Enviando o contexto como "system"
+          parts: [
+            {
+              text: contextPrompt // O contexto é agora usado diretamente
+            }
+          ]
+        },
+        {
+          role: 'user', // A mensagem do usuário
           parts: [
             {
               text: message
