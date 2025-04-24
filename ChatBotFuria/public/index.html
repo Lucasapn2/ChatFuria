@@ -38,23 +38,23 @@
       const chatBox = document.getElementById("chatBox");
       let typingIndicator;
 
+      // Função para adicionar mensagens na tela
       function appendMessage(content, sender) {
         const messageDiv = document.createElement("div");
         messageDiv.className = `message ${sender}-message`;
-        messageDiv.innerHTML = `<b>${
-          sender === "user" ? "Você" : "FuriaBot"
-        }:</b> ${content}`;
+        messageDiv.innerHTML = `<b>${sender === "user" ? "Você" : "FuriaBot"}:</b> ${content}`;
         chatBox.appendChild(messageDiv);
-        chatBox.scrollTop = chatBox.scrollHeight;
+        chatBox.scrollTop = chatBox.scrollHeight; // Rola até o final
       }
 
+      // Função para enviar a mensagem
       function sendMessage() {
         const input = document.getElementById("userInput");
         const message = input.value.trim();
 
-        if (!message) return;
+        if (!message) return; // Evitar envio de mensagens vazias
 
-        appendMessage(message, "user");
+        appendMessage(message, "user"); // Adiciona mensagem do usuário
 
         // Mostra "digitando..."
         typingIndicator = document.createElement("div");
@@ -63,6 +63,7 @@
         chatBox.appendChild(typingIndicator);
         chatBox.scrollTop = chatBox.scrollHeight;
 
+        // Faz a requisição para a função serverless na Vercel
         fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -70,21 +71,25 @@
         })
           .then((response) => {
             if (!response.ok) {
-              throw new Error('Erro na resposta da API');
+              throw new Error("Erro na resposta da API");
             }
             return response.json();
           })
           .then((data) => {
             chatBox.removeChild(typingIndicator); // Remove "digitando..."
-            appendMessage(data.response, "bot"); // Adiciona resposta real
+            if (data.response) {
+              appendMessage(data.response, "bot"); // Adiciona resposta do bot
+            } else {
+              throw new Error("Resposta vazia da API.");
+            }
           })
           .catch((error) => {
-            console.error('Erro no fetch:', error);
+            console.error("Erro no fetch:", error);
             chatBox.removeChild(typingIndicator); // Remove "digitando..."
             appendMessage("Desculpe, algo deu errado. Tente novamente.", "bot");
           });
 
-        input.value = "";
+        input.value = ""; // Limpa o campo de input após enviar a mensagem
       }
     </script>
   </body>
