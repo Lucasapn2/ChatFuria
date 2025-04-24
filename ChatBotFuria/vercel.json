@@ -10,14 +10,14 @@
         "use": "@vercel/static"
       }
     ],
-    "rewrites": [
+    "routes": [
       {
-        "source": "/api/chat",
-        "destination": "/api/chat.js"
+        "src": "/api/(.*)",
+        "dest": "/api/chat.js"
       },
       {
-        "source": "/",
-        "destination": "/index.html"
+        "src": "/(.*)",
+        "dest": "/public/index.html"
       }
     ]
   }
