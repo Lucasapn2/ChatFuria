@@ -1,28 +1,28 @@
 import { GoogleGenAI } from '@google/genai';
-import contextPrompt from './contexto'; // Importando o contexto
+import contextPrompt from './context.js';  // Importando o contexto
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const message = req.body.message;
 
-    // Processamento do GenAI
+    // Processamento do GenAI com o contexto
     const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
     const result = await ai.models.generateContent({
       model: 'gemini-2.0-flash',
       contents: [
         {
-          role: 'system', // Enviando o contexto como "system"
+          role: 'system',  // Definindo o papel do sistema para passar o contexto
           parts: [
             {
-              text: contextPrompt // O contexto é agora usado diretamente
+              text: contextPrompt  // Passando o contexto para o modelo
             }
           ]
         },
         {
-          role: 'user', // A mensagem do usuário
+          role: 'user',  // Agora, o usuário pode interagir normalmente
           parts: [
             {
-              text: message
+              text: message  // Mensagem do usuário
             }
           ]
         }
