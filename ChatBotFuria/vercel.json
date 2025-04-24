@@ -2,24 +2,27 @@
     "version": 2,
     "builds": [
       {
-        "src": "api/chat.js",  
+        "src": "api/chat.js",
         "use": "@vercel/node"
       },
       {
-        "src": "public/index.html",  
+        "src": "public/index.html",
         "use": "@vercel/static"
       },
       {
-        "src": "public/styles.css", 
+        "src": "public/styles.css",
         "use": "@vercel/static"
       },
       {
-        "src": "public/imgs/**/*",  
+        "src": "public/imgs/**/*",
         "use": "@vercel/static"
       }
     ],
     "rewrites": [
-      { "source": "/", "destination": "/index.html" } 
+      {
+        "source": "/",
+        "destination": "/index.html"
+      }
     ]
   }
   
