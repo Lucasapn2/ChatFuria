@@ -7,17 +7,21 @@
     <meta name="author" content="FURIA" />
     <title>FURIA ChatBot - A Pantera Responde</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="particles.css" />
   </head>
   <body>
-    <!-- Chat Container -->
+    <!-- Fundo de partículas -->
+    <div id="particles-js"></div>
+
+    <!-- Container principal do Chat -->
     <div class="chat-container">
       <div class="chat-header">
         <img src="imgs/logo.png" alt="Logo FURIA" class="logo" />
         <span>Furia</span>
       </div>
-      <div class="chat-box" id="chatBox" role="log">
-        <!-- Mensagem inicial automática será inserida via JS -->
-      </div>
+
+      <div class="chat-box" id="chatBox" role="log"></div>
+
       <div class="input-area">
         <input
           type="text"
@@ -32,11 +36,11 @@
       </div>
     </div>
 
+    <!-- Script do chat -->
     <script>
       const chatBox = document.getElementById("chatBox");
       let typingIndicator;
 
-      // Função para adicionar mensagens
       function appendMessage(content, sender) {
         const messageDiv = document.createElement("div");
         messageDiv.className = `message ${sender}-message`;
@@ -46,7 +50,6 @@
         chatBox.scrollTop = chatBox.scrollHeight;
       }
 
-      // Animação de digitação do bot
       function animateBotMessage(text) {
         const messageDiv = document.createElement("div");
         messageDiv.className = "message bot-message";
@@ -66,7 +69,6 @@
         }, 30);
       }
 
-      // Enviar mensagem do usuário
       function sendMessage() {
         const input = document.getElementById("userInput");
         const message = input.value.trim();
@@ -109,12 +111,17 @@
         input.value = "";
       }
 
-      // Mensagem automática ao abrir o chat
       window.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
-          animateBotMessage("E aí, lenda! Eu sou a Pantera da FURIA. Preparado pra trocar ideia ou tirar dúvidas? Manda ver!");
+          animateBotMessage(
+            "E aí, lenda! Eu sou a Pantera da FURIA. Preparado pra trocar ideia ou tirar dúvidas? Manda ver!"
+          );
         }, 400);
       });
     </script>
+
+    <!-- Bibliotecas externas -->
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles.js"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
-import { GoogleGenAI } from '@google/genai';
-import contextPrompt from './api/contexto';
+const { GoogleGenAI } = require('@google/genai');
+const contexto = require('./contexto');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method === 'POST') {
     const message = req.body.message;
 
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       contents: [
         {
           role: 'user',
-          parts: [{ text: contextPrompt }]
+          parts: [{ text: contexto }]
         },
         {
           role: 'user',
@@ -25,4 +25,4 @@ export default async function handler(req, res) {
   } else {
     res.status(405).json({ response: 'Método não permitido' });
   }
-}
+};

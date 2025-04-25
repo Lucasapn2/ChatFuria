@@ -1,13 +1,12 @@
 {
   "name": "chat-bot-furia",
   "version": "1.0.0",
-  "type": "module",
   "description": "ChatBot da FURIA utilizando Google GenAI",
   "main": "index.js",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js"
-  },
+  "dev": "node server.js",
+  "start": "node server.js"
+},
   "dependencies": {
     "@google/genai": "^0.10.0",
     "dotenv": "^16.0.0",

@@ -1,4 +1,6 @@
+
 * {
+  overflow-x: hidden;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10,6 +12,7 @@ body {
   color: white;
   display: flex;
   justify-content: center;
+  width: 100%;
   align-items: center;
   min-height: 100vh;
   padding: 40px; /* afasta o conteúdo do topo e das laterais no desktop */
@@ -17,6 +20,8 @@ body {
 
 /* Container principal do chat */
 .chat-container {
+  z-index: 999;
+
   width: 100%;
   max-width: 700px;
   height: 90vh; /* menos que 100vh para não colar nas bordas */
@@ -55,7 +60,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-  font-family: 'Arial Black', sans-serif;
+  font-family: "Arial Black", sans-serif;
 }
 
 /* Caixa de mensagens */
@@ -132,7 +137,7 @@ body {
 }
 
 /* 🔁 Responsividade para telas pequenas */
-@media (max-width: 600px) {
+@media (max-width: 600px ) and (min-width: 300px) {
   body {
     padding: 5px;
   }
@@ -140,6 +145,8 @@ body {
   .chat-container {
     height: 100dvh;
     border-radius: 0;
+    width: 100%;
+    
   }
 
   .chat-header span {
@@ -156,4 +163,17 @@ body {
   .input-area button {
     width: 100%;
   }
+  #particles-js {
+    display: none; /* Esconde o canvas em telas pequenas */ 
+  }
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* atrás de tudo */
+  pointer-events: none; /* permite clicar nos elementos acima */
 }
