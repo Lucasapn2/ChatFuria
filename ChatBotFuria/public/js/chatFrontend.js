@@ -13,7 +13,7 @@
       function animateBotMessage(text) {
         const messageDiv = document.createElement("div");
         messageDiv.className = "message bot-message";
-        messageDiv.innerHTML = `<b>FuriaBot:</b> `;
+        messageDiv.innerHTML = `<b>FuriaIA:</b> `;
         chatBox.appendChild(messageDiv);
         chatBox.scrollTop = chatBox.scrollHeight;
 

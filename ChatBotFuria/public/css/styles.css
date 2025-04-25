@@ -1,30 +1,27 @@
-
 * {
-  overflow-x: hidden;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
+html, body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #0b0b12e6;
   color: white;
   display: flex;
   justify-content: center;
-  width: 100%;
   align-items: center;
-  min-height: 100vh;
-  padding: 40px; /* afasta o conteúdo do topo e das laterais no desktop */
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* evita scroll global no body */
 }
 
 /* Container principal do chat */
 .chat-container {
   z-index: 999;
-
   width: 100%;
   max-width: 700px;
-  height: 90vh; /* menos que 100vh para não colar nas bordas */
+  height: 90vh;
   display: flex;
   flex-direction: column;
   background-color: #2e2e45;
@@ -42,7 +39,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: #fff;
+  flex-shrink: 0;
 }
 
 .chat-header .logo {
@@ -66,7 +63,6 @@ body {
 /* Caixa de mensagens */
 .chat-box {
   flex: 1;
-  min-height: 0;
   padding: 20px;
   overflow-y: auto;
   scroll-behavior: smooth;
@@ -74,29 +70,37 @@ body {
   flex-direction: column;
   gap: 10px;
   background-color: #04040870;
+
+  /* ✅ este é o único lugar com scroll vertical */
 }
 
-/* Estilo das mensagens */
+/* Mensagens (user e bot) */
 .message {
   max-width: 80%;
   padding: 12px 15px;
   border-radius: 12px;
-  line-height: 1.4;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  font-size: 17px;
+  line-height: 1.6;
+
+  /* 🔑 sem scroll interno nas mensagens */
+  overflow: visible;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  display: inline-block;
 }
 
 .user-message {
   align-self: flex-end;
   background-color: #ffffff;
-  color: black;
+  color: #000000;
   border-bottom-right-radius: 0;
 }
 
 .bot-message {
   align-self: flex-start;
   background-color: #000000;
-  color: #fff;
+  color: #ffffff;
   border-bottom-left-radius: 0;
 }
 
@@ -108,6 +112,7 @@ body {
   border-top: 1px solid #3f3f5c;
   gap: 10px;
   flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .input-area input {
@@ -136,22 +141,26 @@ body {
   background-color: #009eb3;
 }
 
-/* 🔁 Responsividade para telas pequenas */
-@media (max-width: 600px ) and (min-width: 300px) {
-  body {
-    padding: 5px;
-  }
-
+/* Responsivo */
+@media (max-width: 600px) {
   .chat-container {
+    width: 100%;
     height: 100dvh;
     border-radius: 0;
-    width: 100%;
-    
   }
 
   .chat-header span {
     font-size: 22px;
     text-align: center;
+  }
+
+  .chat-box {
+    padding: 10px;
+  }
+
+  .message {
+    font-size: 18px;
+    padding: 14px;
   }
 
   .input-area {
@@ -163,17 +172,19 @@ body {
   .input-area button {
     width: 100%;
   }
+
   #particles-js {
-    display: none; /* Esconde o canvas em telas pequenas */ 
+    display: none;
   }
 }
 
+/* Partículas (opcional) */
 #particles-js {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* atrás de tudo */
-  pointer-events: none; /* permite clicar nos elementos acima */
+  z-index: 0;
+  pointer-events: none;
 }
