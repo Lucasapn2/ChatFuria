@@ -43,7 +43,7 @@
         chatBox.appendChild(typingIndicator);
         chatBox.scrollTop = chatBox.scrollHeight;
 
-        fetch("/api/chat", {
+        fetch("/api/chatHandler", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message }),

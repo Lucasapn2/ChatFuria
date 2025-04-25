@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="ChatBot da FURIA" />
     <meta name="author" content="FURIA" />
-    <title>FURIA ChatBot - A Pantera Responde</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="particles.css" />
+    <title>Furia.Ia -A Pantera Responde</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/imgs/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/particles.css" />
   </head>
   <body>
     <!-- Fundo de partículas -->
@@ -16,7 +20,7 @@
     <!-- Container principal do Chat -->
     <div class="chat-container">
       <div class="chat-header">
-        <img src="imgs/logo.png" alt="Logo FURIA" class="logo" />
+        <img src="/imgs/logo.png" alt="Logo FURIA" class="logo" />
         <span>Furia</span>
       </div>
 
@@ -36,92 +40,9 @@
       </div>
     </div>
 
-    <!-- Script do chat -->
-    <script>
-      const chatBox = document.getElementById("chatBox");
-      let typingIndicator;
-
-      function appendMessage(content, sender) {
-        const messageDiv = document.createElement("div");
-        messageDiv.className = `message ${sender}-message`;
-        messageDiv.innerHTML =
-          sender === "bot" ? `<b>FuriaBot:</b> ${content}` : `${content}`;
-        chatBox.appendChild(messageDiv);
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }
-
-      function animateBotMessage(text) {
-        const messageDiv = document.createElement("div");
-        messageDiv.className = "message bot-message";
-        messageDiv.innerHTML = `<b>FuriaBot:</b> `;
-        chatBox.appendChild(messageDiv);
-        chatBox.scrollTop = chatBox.scrollHeight;
-
-        let i = 0;
-        const interval = setInterval(() => {
-          if (i < text.length) {
-            messageDiv.innerHTML += text.charAt(i);
-            chatBox.scrollTop = chatBox.scrollHeight;
-            i++;
-          } else {
-            clearInterval(interval);
-          }
-        }, 30);
-      }
-
-      function sendMessage() {
-        const input = document.getElementById("userInput");
-        const message = input.value.trim();
-
-        if (!message) return;
-
-        appendMessage(message, "user");
-
-        typingIndicator = document.createElement("div");
-        typingIndicator.className = "message bot-message typing";
-        typingIndicator.innerHTML = `<b>FuriaBot:</b> Digitando...`;
-        chatBox.appendChild(typingIndicator);
-        chatBox.scrollTop = chatBox.scrollHeight;
-
-        fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message }),
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("Erro na resposta da API");
-            }
-            return response.json();
-          })
-          .then((data) => {
-            chatBox.removeChild(typingIndicator);
-            if (data.response) {
-              animateBotMessage(data.response);
-            } else {
-              throw new Error("Resposta vazia da API.");
-            }
-          })
-          .catch((error) => {
-            console.error("Erro no fetch:", error);
-            chatBox.removeChild(typingIndicator);
-            appendMessage("Desculpe, algo deu errado. Tente novamente.", "bot");
-          });
-
-        input.value = "";
-      }
-
-      window.addEventListener("DOMContentLoaded", () => {
-        setTimeout(() => {
-          animateBotMessage(
-            "E aí, lenda! Eu sou a Pantera da FURIA. Preparado pra trocar ideia ou tirar dúvidas? Manda ver!"
-          );
-        }, 400);
-      });
-    </script>
-
-    <!-- Bibliotecas externas -->
-    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="particles.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="/js/particles.js"></script>
+    <script src="/js/chatFrontend.js"></script>
   </body>
 </html>
