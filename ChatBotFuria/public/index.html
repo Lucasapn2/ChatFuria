@@ -42,7 +42,8 @@
       function appendMessage(content, sender) {
         const messageDiv = document.createElement("div");
         messageDiv.className = `message ${sender}-message`;
-        messageDiv.innerHTML = `<b>${sender === "user" ? "Você" : "FuriaBot"}:</b> ${content}`;
+        messageDiv.innerHTML =
+          sender === "bot" ? `<b>FuriaBot:</b> ${content}` : `${content}`;
         chatBox.appendChild(messageDiv);
         chatBox.scrollTop = chatBox.scrollHeight; // Rola até o final
       }
