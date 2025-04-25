@@ -16,9 +16,7 @@
         <span>Furia</span>
       </div>
       <div class="chat-box" id="chatBox" role="log">
-        <div class="message bot-message">
-          <b>FuriaBot:</b> Olá! Seja bem-vindo 👋 Como posso te ajudar hoje?
-        </div>
+        <!-- Mensagem inicial automática será inserida via JS -->
       </div>
       <div class="input-area">
         <input
@@ -38,33 +36,51 @@
       const chatBox = document.getElementById("chatBox");
       let typingIndicator;
 
-      // Função para adicionar mensagens na tela
+      // Função para adicionar mensagens
       function appendMessage(content, sender) {
         const messageDiv = document.createElement("div");
         messageDiv.className = `message ${sender}-message`;
         messageDiv.innerHTML =
           sender === "bot" ? `<b>FuriaBot:</b> ${content}` : `${content}`;
         chatBox.appendChild(messageDiv);
-        chatBox.scrollTop = chatBox.scrollHeight; // Rola até o final
+        chatBox.scrollTop = chatBox.scrollHeight;
       }
 
-      // Função para enviar a mensagem
+      // Animação de digitação do bot
+      function animateBotMessage(text) {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "message bot-message";
+        messageDiv.innerHTML = `<b>FuriaBot:</b> `;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        let i = 0;
+        const interval = setInterval(() => {
+          if (i < text.length) {
+            messageDiv.innerHTML += text.charAt(i);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            i++;
+          } else {
+            clearInterval(interval);
+          }
+        }, 30);
+      }
+
+      // Enviar mensagem do usuário
       function sendMessage() {
         const input = document.getElementById("userInput");
         const message = input.value.trim();
 
-        if (!message) return; // Evitar envio de mensagens vazias
+        if (!message) return;
 
-        appendMessage(message, "user"); // Adiciona mensagem do usuário
+        appendMessage(message, "user");
 
-        // Mostra "digitando..."
         typingIndicator = document.createElement("div");
         typingIndicator.className = "message bot-message typing";
         typingIndicator.innerHTML = `<b>FuriaBot:</b> Digitando...`;
         chatBox.appendChild(typingIndicator);
         chatBox.scrollTop = chatBox.scrollHeight;
 
-        // Faz a requisição para a função serverless na Vercel
         fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -77,21 +93,28 @@
             return response.json();
           })
           .then((data) => {
-            chatBox.removeChild(typingIndicator); // Remove "digitando..."
+            chatBox.removeChild(typingIndicator);
             if (data.response) {
-              appendMessage(data.response, "bot"); // Adiciona resposta do bot
+              animateBotMessage(data.response);
             } else {
               throw new Error("Resposta vazia da API.");
             }
           })
           .catch((error) => {
             console.error("Erro no fetch:", error);
-            chatBox.removeChild(typingIndicator); // Remove "digitando..."
+            chatBox.removeChild(typingIndicator);
             appendMessage("Desculpe, algo deu errado. Tente novamente.", "bot");
           });
 
-        input.value = ""; // Limpa o campo de input após enviar a mensagem
+        input.value = "";
       }
+
+      // Mensagem automática ao abrir o chat
+      window.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          animateBotMessage("E aí, lenda! Eu sou a Pantera da FURIA. Preparado pra trocar ideia ou tirar dúvidas? Manda ver!");
+        }, 400);
+      });
     </script>
   </body>
 </html>

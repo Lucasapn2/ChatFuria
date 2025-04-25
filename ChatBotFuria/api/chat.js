@@ -1,5 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
-import contextPrompt from './contexto';
+import contextPrompt from './api/contexto';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

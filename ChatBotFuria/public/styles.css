@@ -11,16 +11,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh; /* ajuste para mobile */
-  margin: 0;
-  padding: 10px;
+  min-height: 100vh;
+  padding: 40px; /* afasta o conteúdo do topo e das laterais no desktop */
 }
 
 /* Container principal do chat */
 .chat-container {
   width: 100%;
   max-width: 700px;
-  height: 100dvh; /* ajuste para mobile */
+  height: 90vh; /* menos que 100vh para não colar nas bordas */
   display: flex;
   flex-direction: column;
   background-color: #2e2e45;
@@ -62,8 +61,7 @@ body {
 /* Caixa de mensagens */
 .chat-box {
   flex: 1;
-  min-height: 0; /* ESSENCIAL para scroll funcionar corretamente dentro de flex */
-  max-height: 100%;
+  min-height: 0;
   padding: 20px;
   overflow-y: auto;
   scroll-behavior: smooth;
