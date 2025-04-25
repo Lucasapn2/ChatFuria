@@ -13,7 +13,7 @@ html, body {
   align-items: center;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* evita scroll global no body */
+  overflow: hidden; 
 }
 
 /* Container principal do chat */
@@ -71,10 +71,8 @@ html, body {
   gap: 10px;
   background-color: #04040870;
 
-  /* ✅ este é o único lugar com scroll vertical */
 }
 
-/* Mensagens (user e bot) */
 .message {
   max-width: 80%;
   padding: 12px 15px;
@@ -82,7 +80,6 @@ html, body {
   font-size: 17px;
   line-height: 1.6;
 
-  /* 🔑 sem scroll interno nas mensagens */
   overflow: visible;
   white-space: normal;
   word-break: break-word;
@@ -178,7 +175,6 @@ html, body {
   }
 }
 
-/* Partículas (opcional) */
 #particles-js {
   position: fixed;
   top: 0;
