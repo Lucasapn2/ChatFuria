@@ -23,7 +23,7 @@ Esse projeto foi desenvolvido para o **Challenge #1 - Experiência Conversaciona
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Frontend**:
 
@@ -113,11 +113,11 @@ Exemplo de resposta típica:
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
 Desenvolvido com muita garra por **Lucas Ferreira**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucas-ferreira-me/) | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Lucasapn2)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucas-ferreira-me/) [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Lucasapn2)
 
 ---
 
