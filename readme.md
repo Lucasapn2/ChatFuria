@@ -30,7 +30,7 @@ Esse projeto foi desenvolvido para o **Challenge #1 - Experiência Conversaciona
   - HTML5
   - CSS3
   - JavaScript (Fetch API)
-  - [![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercelcom/)
+  - [![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
   - ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
 - **Backend**:
