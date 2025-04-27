@@ -37,8 +37,7 @@ Esse projeto foi desenvolvido para o **Challenge #1 - Experiência Conversaciona
 
   - ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
-  - [![NPM Package](https://img.shields.io/badge/@google/genai-FC5D5D?style=for-the-badge&logo=npm&logoColor=white)] (https://www.npmjs.com/package/@google/genai)
-
+  - ![NPM Package](https://img.shields.io/badge/@google/genai-FC5D5D?style=for-the-badge&logo=npm&logoColor=white)
 ---
 
 ## 🚀 Como Rodar o Projeto
