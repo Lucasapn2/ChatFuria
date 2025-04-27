@@ -37,6 +37,7 @@ Esse projeto foi desenvolvido para o **Challenge #1 - Experiência Conversaciona
 
   - ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
   - [![NPM Package @google/genai](https://img.shields.io/badge/@google/genai-FC5D5D?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/@google/genai)
+  - [![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
 ---
 
 ## Como Rodar o Projeto
@@ -94,7 +95,13 @@ http://localhost:3000
 
 ## Demonstração
 
-_(Insira prints aqui quando quiser mostrar o projeto rodando)_
+### Versão Web
+<img src="/ChatBotFuria/public/assets/docs-images/docs-1.png" width="600"/>
+
+### Versão Mobile
+<img src="/ChatBotFuria/public/assets/docs-images/docs-2.png" width="300"/>
+
+
 
 ---
 

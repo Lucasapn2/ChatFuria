@@ -26,7 +26,7 @@ function animateBotMessage(text) {
     } else {
       clearInterval(interval);
     }
-  }, 30);
+  }, 15);
 }
 
 function sendMessage() {
