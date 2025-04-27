@@ -1,28 +1,30 @@
-import { GoogleGenAI } from '@google/genai';
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+import chat from './api/chat.js'; 
+dotenv.config();
 
-export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    const message = req.body.message;
+const app = express();
+const port = process.env.PORT || 3000;
 
-    // Processamento do GenAI
-    const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
-    const result = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
-      contents: [
-        {
-          role: 'user',
-          parts: [
-            {
-              text: message
-            }
-          ]
-        }
-      ]
-    });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-    const responseText = result?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sem resposta gerada.';
-    res.status(200).json({ response: responseText });
-  } else {
-    res.status(405).json({ response: 'Método não permitido' });
-  }
-}
+app.use(express.json());
+
+// Servir arquivos estáticos da pasta "public"
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Rota para servir o index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Rota da API
+app.post('/api/chat', chat); 
+
+// Iniciar servidor
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
