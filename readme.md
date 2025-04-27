@@ -27,20 +27,19 @@ Esse projeto foi desenvolvido para o **Challenge #1 - Experiência Conversaciona
 
 - **Frontend**:
 
-  - HTML5
-  - CSS3
-  - JavaScript (Fetch API)
-  - [![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+  - ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+  - ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+  - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+  - [![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercelcom/)
   - ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
 - **Backend**:
 
   - ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-
-  - ![NPM Package](https://img.shields.io/badge/@google/genai-FC5D5D?style=for-the-badge&logo=npm&logoColor=white)
+  - [![NPM Package @google/genai](https://img.shields.io/badge/@google/genai-FC5D5D?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/@google/genai)
 ---
 
-## 🚀 Como Rodar o Projeto
+## Como Rodar o Projeto
 
 1. **Clone o repositório:**
 
@@ -62,11 +61,22 @@ npm install
 
 4. **Configure a variável de ambiente:**
 
-Crie um arquivo `.env` na raiz do projeto e adicione sua chave da API do Google:
+Crie um arquivo `.env` na raiz do projeto e adicione sua chave da API KEY do Google:
 
 ```
 GOOGLE_API_KEY=SUA_CHAVE_DE_API
 ```
+#  Como obter sua Google API Key
+
+- Acesse a [documentação da Gemini API](https://ai.google.dev/gemini-api/docs?hl=pt-br).
+- Crie um novo projeto (ou selecione um projeto existente) no Google Cloud Console.
+- Ative a API necessária, como **Generative Language API** (ou a API que seu projeto utilizar).
+- Navegue até o menu **APIs e Serviços** > **Credenciais**.
+- Clique em **Criar credencial** > **Chave da API**.
+- Copie a chave gerada.
+- Cole a chave no seu arquivo `.env` 
+
+---
 
 5. **Inicie o servidor:**
 
