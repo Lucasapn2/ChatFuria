@@ -1,6 +1,7 @@
 {
   "name": "chat-bot-furia",
   "version": "1.0.0",
+  "type": "module",
   "description": "ChatBot da FURIA utilizando Google GenAI",
   "main": "index.js",
   "scripts": {
@@ -19,6 +20,6 @@
   "engines": {
     "node": ">=18"
   },
-  "author": "FURIA",
+  "author": "https://github.com/Lucasapn2",
   "license": "MIT"
 }
