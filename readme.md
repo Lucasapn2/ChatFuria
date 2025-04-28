@@ -122,12 +122,6 @@ Exemplo de resposta típica:
 
 ## Autor
 
-Desenvolvido com muita garra por **Lucas Ferreira**
+Desenvolvido por **Lucas Ferreira**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucas-ferreira-me/) [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Lucasapn2)
-
----
-
----
-
-# "Aqui é FURIA, mano! Nunca fomos tão longe!"

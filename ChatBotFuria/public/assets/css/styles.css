@@ -194,7 +194,7 @@ li {
   pointer-events: none;
 }
 .suggestion-button {
-  background: linear-gradient(135deg, #007bff, #0056b3);
+  background: linear-gradient(135deg, #3f3f5c, #0056b3);
   color: white;
   border: none;
   padding: 12px 20px;
