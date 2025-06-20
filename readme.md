@@ -1,7 +1,5 @@
 # FuriaBot - Chat para Torcedores da FURIA
 
-> **O chatbot da torcida mais insana do planeta!**
-
 ---
 
 ## Sobre o Projeto
